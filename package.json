@@ -1,0 +1,25 @@
+{
+  "name": "excel2table",
+  "author":{
+    "name":"Aleksei Kolosov"
+  },
+  "keywords":"excel, convert, table",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "Renders excel file as HTML table",
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/DHTMLX/json2table"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn rollup -c"
+  },
+  "files": [
+    "/index.js",
+    "/theme.css"
+  ],
+  "devDependencies": {
+    "rollup": "^1.3.0"
+  }
+}

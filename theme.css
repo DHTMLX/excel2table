@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.excel2table {
+	font-family: Roboto,Arial,Tahoma,Verdana,sans-serif;
+	font-size: 14px;
+
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.excel2table td {
+	padding: 6px 4px;
+	border: 1px solid #ededed;
+}
+
+.excel2table th.scale-x-cell {
+	background: #ededed;
+	color: rgba(0,0,0,.7);
+	text-align: center;
+	font-weight: 400;
+
+	line-height: 32px;
+	padding: 0px;
+	font-size:14px;
+}
+
+.excel2table td.scale-y-cell {
+	background: #ededed;
+	color: rgba(0,0,0,.7);
+
+	padding-right: 8px;
+	padding-left: 16px;
+}
