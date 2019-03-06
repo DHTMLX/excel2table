@@ -1,24 +1,28 @@
-# excel2table
+Excel2table library
+-----------------------
 
-Renders excel file as HTML table
+Excel2table is a library that will help you to render an Excel file as an HTML table. It uses https://github.com/dhtmlx/excel2json for Excel parsing.
 
 ### How to use
 
+- import the library
+
 ```js
 import "excel2table";
-
-excel2table.render(html_container, data, config);
-
-/*
-	html_container - css locator or HTML element
-	data - file object or data blob
-	config - optional, { worker, scales } 
-		- worker: string - url for web worker, cdn used by default
-		- scales: boolean - show or not excel scales
-*/
 ```
 
-Lib uses https://github.com/dhtmlx/excel2json for excel parsing
+- call the `render` function:
+
+```js
+excel2table.render(html_container, data, config);
+```
+The parameters of the function are the following:
+
+- **html_container** - a CSS locator or an HTML element
+- **data** - a file object or a data blob
+- **config** - optional, a configuration object { worker, scales }, where
+	- *worker*: string - an URL for a web worker; CDN is used by default
+	- *scales*: boolean - defines whether Excel scale is shown
 
 
 ### License
