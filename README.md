@@ -3,6 +3,8 @@ Excel2table
 
 Excel2table is a library that will help you to render an Excel file as an HTML table. It uses https://github.com/dhtmlx/excel2json for Excel parsing.
 
+![result](result.png)
+
 ### How to use
 
 - import the library:
