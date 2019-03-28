@@ -3,13 +3,13 @@
   "author":{
     "name":"Aleksei Kolosov"
   },
-  "keywords":"excel, convert, table",
+  "keywords":"excel, convert, table, preview",
   "license": "MIT",
   "version": "1.0.0",
   "description": "Renders excel file as HTML table",
   "repository":{
     "type":"git",
-    "url":"https://github.com/DHTMLX/json2table"
+    "url":"https://github.com/DHTMLX/excel2table"
   },
   "main": "index.js",
   "scripts": {
