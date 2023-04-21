@@ -1,25 +1,39 @@
 {
   "name": "excel2table",
-  "author":{
-    "name":"Aleksei Kolosov"
-  },
-  "keywords":"excel, convert, table, preview",
-  "license": "MIT",
-  "version": "1.0.0",
+  "type": "module",
+  "version": "1.2.0",
   "description": "Renders excel file as HTML table",
-  "repository":{
-    "type":"git",
-    "url":"https://github.com/DHTMLX/excel2table"
-  },
-  "main": "index.js",
   "scripts": {
-    "build": "yarn rollup -c"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "files": [
-    "/index.js",
-    "/theme.css"
+  "keywords": [
+    "excel",
+    "convert",
+    "table",
+    "preview"
   ],
+  "collaborators": [
+    "Aleksei Kolosov <akolosov@xbsoftware.com>",
+    "Maksim Kozhukh <mk@mono.ink>"
+  ],
+  "files": [
+    "src",
+    "./theme.css"
+  ],
+  "main": "src/main.js",
+  "module": "src/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DHTMLX/excel2table"
+  },
   "devDependencies": {
-    "rollup": "^1.3.0"
+    "vite": "^4.2.0",
+    "vite-plugin-top-level-await": "^1.3.0",
+    "vite-plugin-wasm": "^3.2.2"
+  },
+  "dependencies": {
+    "excel2json-wasm": "^1.2.0"
   }
 }

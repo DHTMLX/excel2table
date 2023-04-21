@@ -9,16 +9,9 @@ Excel2table is a library that will help you to render an Excel file as an HTML t
 
 ### How to use
 
-- import the library:
-
 ```js
-import "excel2table";
-```
-
-- call the `render` function:
-
-```js
-excel2table.render(html_container, data, config);
+import {render} from "excel2table";
+render(html_container, data, config);
 ```
 The parameters of the function are the following:
 
@@ -27,6 +20,7 @@ The parameters of the function are the following:
 - **config** - optional, a configuration object { worker, scale }, where
 	- *worker*: string - an URL for a web worker; CDN is used by default
 	- *scale*: boolean - defines whether Excel scale is shown
+	- *sheets*: boolean - defines if sheet selector need to be rendered or not
 
 
 ### License

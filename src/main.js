@@ -1,38 +1,55 @@
 import { createXSLXStyles } from "./css";
 import { formatCell } from "./formatter";
-import { getWorker } from "./worker";
+import { convert } from "excel2json-wasm";
 
-export function render(container, data, config) {
-    config = config || {};
-
+export function render(container, rawData, config = {}) {
     if (typeof container === "string"){
         container = document.querySelector(container);
     }
 
-    let url = config.worker;
-    if (!url){
-        url = window.URL.createObjectURL(new Blob([
-            "importScripts('https://cdn.dhtmlx.com/libs/excel2json/1.0/worker.js');"
-         ], { type: "text/javascript" }));
-    }
-
-    return getWorker(url).send({ type: "convert", data })
-        .then(result => renderJSON(container, result.data, result.styles, config));
+    convert(rawData, config).then(({ data, styles }) => {
+        renderJSON(container, data, styles, config);
+    });
 }
 
-export function renderJSON(container, data, styles, config){
+export function renderJSON(container, data, styles, config = {}){
+    createXSLXStyles(styles);
+
+    let html="";
+    if (config.sheets){
+        // render html select with list of sheets
+        html += `<select class='excel2table-sheets'>`;
+        for (let i=0; i<data.length; i++){
+            const sheet = data[i];
+            html += `<option value="${i}">${sheet.name}</option>`;
+        }
+        html += "</select>";
+    }
+
+    html += sheetToHTML(data[0], styles, config);
+    container.innerHTML = html;
+
+    if (config.sheets){
+        const sel = container.querySelector(".excel2table-sheets");
+        const table = container.querySelector(".excel2table-box");
+        sel.addEventListener("change", (e) => {
+            table.innerHTML = sheetToHTML(data[sel.value*1], styles, config);
+        });
+    }
+}
+
+export function sheetToHTML(sheet, styles, config) {
     const {
         cells,
         cols,
         rows,
-        name,
         merged
-    } = data[0];
+    } = sheet;
 
-    createXSLXStyles(styles);
     applyMerges(cells, merged);
 
-    let html = "<table class='excel2table'><tr>";
+
+    let html = "<div class='excel2table-box'><table class='excel2table'><tr>";
     if (config.scales){
         html += "<th class='scale-x-cell'></td>";
         for (let j=0; j<cols.length; j++){
@@ -57,9 +74,9 @@ export function renderJSON(container, data, styles, config){
         }
         html+="</tr>";
     }
-    html+="</table>";
+    html+="</table></div>";
 
-    container.innerHTML = html;
+    return html;
 }
 
 function createCell(cell, styles) {
@@ -111,3 +128,5 @@ function applyMerges(cells, merged){
         cells[from.row][from.column] = cell;
     }
 }
+
+window.excel2table = { render };
